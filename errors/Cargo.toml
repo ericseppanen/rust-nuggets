@@ -1,0 +1,20 @@
+[package]
+name = "rust_nuggets_errors"
+version = "0.1.0"
+authors = ["Eric Seppanen <eds@reric.net>"]
+edition = "2018"
+
+[[example]]
+name = "immutable_ref"
+crate-type = ["lib"]
+
+[[example]]
+name = "mutex_guard_lifetime"
+crate-type = ["lib"]
+
+[[example]]
+name = "vec_ref_push"
+crate-type = ["lib"]
+
+
+[dependencies]
