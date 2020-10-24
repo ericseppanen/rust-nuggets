@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- This file was created with the aha Ansi HTML Adapter. https://github.com/theZiz/aha -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xml+xhtml; charset=UTF-8" />
+<title>Rust Nuggets: error examples</title>
+</head>
+<body style="color:white; background-color:black">
+<pre>
+######## Rust Nuggets: error examples ########
+
+
+
+
+$ cargo check --example immutable_ref
+
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">error[E0596]</span><span style="font-weight:bold;">: cannot borrow `thing.x` as mutable, as it is behind a `&amp;` reference</span>
+  <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">--&gt; </span>errors/examples/immutable_ref.rs:13:5
+   <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">|</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">12</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>fn observe(thing: &amp;Thing) {
+   <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>                  <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">------</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">help: consider changing this to be a mutable reference: `&amp;mut Thing`</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">13</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>    thing.x[0] = 1;
+   <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>    <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">^^^^^^^</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">`thing` is a `&amp;` reference, so the data it refers to cannot be borrowed as mutable</span>
+
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">error</span><span style="font-weight:bold;">: aborting due to previous error</span>
+
+<span style="font-weight:bold;">For more information about this error, try `rustc --explain E0596`.</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;color:red;">error</span><span style="font-weight:bold;">:</span> could not compile `rust_nuggets_errors`.
+
+To learn more, run the command again with --verbose.
+
+
+
+
+$ cargo check --example mutex_guard_lifetime
+
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">error[E0597]</span><span style="font-weight:bold;">: `guard` does not live long enough</span>
+  <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">--&gt; </span>errors/examples/mutex_guard_lifetime.rs:17:18
+   <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">|</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">17</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>        x_ref = &amp;guard.x;
+   <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>                 <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">^^^^^</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">borrowed value does not live long enough</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">18</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>    }
+   <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>    <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">-</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">`guard` dropped here while still borrowed</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">19</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>    println!(&quot;x was {}&quot;, x_ref);
+   <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>                         <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">-----</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">borrow later used here</span>
+
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">error</span><span style="font-weight:bold;">: aborting due to previous error</span>
+
+<span style="font-weight:bold;">For more information about this error, try `rustc --explain E0597`.</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;color:red;">error</span><span style="font-weight:bold;">:</span> could not compile `rust_nuggets_errors`.
+
+To learn more, run the command again with --verbose.
+
+
+
+
+$ cargo check --example vec_ref_push
+
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">error[E0502]</span><span style="font-weight:bold;">: cannot borrow `thing.x` as mutable because it is also borrowed as immutable</span>
+  <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">--&gt; </span>errors/examples/vec_ref_push.rs:17:5
+   <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">|</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">15</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>    let y: &amp;u8 = &amp;thing.x[0];
+   <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>                  <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">-------</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">immutable borrow occurs here</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">16</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">17</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>    thing.x.push(1);
+   <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>    <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">^^^^^^^^^^^^^^^</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">mutable borrow occurs here</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">18</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">19</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>    println!(&quot;y is {}&quot;, y);
+   <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>                        <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">-</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">immutable borrow later used here</span>
+
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">error</span><span style="font-weight:bold;">: aborting due to previous error</span>
+
+<span style="font-weight:bold;">For more information about this error, try `rustc --explain E0502`.</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;color:red;">error</span><span style="font-weight:bold;">:</span> could not compile `rust_nuggets_errors`.
+
+To learn more, run the command again with --verbose.
+</pre>
+</body>
+</html>

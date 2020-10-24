@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo -e "######## $TITLE ########"
+for FILE in ../errors/examples/*.rs; do
+  FILE1=${FILE%.rs}  # strip extension
+  FILE2=${FILE1##*/} # strip path
+  echo -e "\n\n\n\n$ cargo check --example $FILE2\n"
+  cargo -q --color always check --example $FILE2
+done

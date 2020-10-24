@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+which aha >/dev/null || {
+  echo "Error: The 'aha' tool must be in your path."
+  exit 1
+}
+
+export TITLE="Rust Nuggets: error examples"
+./run_cargo_check 2>&1 | aha --black --title "$TITLE" >errors.html
