@@ -9,6 +9,10 @@ name = "enums"
 crate-type = ["lib"]
 
 [[example]]
+name = "structs"
+crate-type = ["lib"]
+
+[[example]]
 name = "standard"
 crate-type = ["lib"]
 

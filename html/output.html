@@ -51,6 +51,33 @@ To learn more, run the command again with --verbose.
 
 
 
+$ cargo check --example integer_mismatch
+
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">error[E0308]</span><span style="font-weight:bold;">: mismatched types</span>
+  <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">--&gt; </span>errors/examples/integer_mismatch.rs:12:22
+   <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">|</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">12</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>    let x: u32 = a + b;
+   <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>                     <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">^</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">expected `u32`, found `u8`</span>
+
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">error[E0277]</span><span style="font-weight:bold;">: cannot add `u8` to `u32`</span>
+  <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">--&gt; </span>errors/examples/integer_mismatch.rs:12:20
+   <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">|</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">12</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>    let x: u32 = a + b;
+   <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>                   <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">^</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">no implementation for `u32 + u8`</span>
+   <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">|</span>
+   <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">= </span><span style="font-weight:bold;">help</span>: the trait `std::ops::Add&lt;u8&gt;` is not implemented for `u32`
+
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">error</span><span style="font-weight:bold;">: aborting due to 2 previous errors</span>
+
+<span style="font-weight:bold;">Some errors have detailed explanations: E0277, E0308.</span>
+<span style="font-weight:bold;">For more information about an error, try `rustc --explain E0277`.</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;color:red;">error</span><span style="font-weight:bold;">:</span> could not compile `rust_nuggets_errors`.
+
+To learn more, run the command again with --verbose.
+
+
+
+
 $ cargo check --example mutex_guard_lifetime
 
 <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">error[E0597]</span><span style="font-weight:bold;">: `guard` does not live long enough</span>
@@ -66,6 +93,31 @@ $ cargo check --example mutex_guard_lifetime
 <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">error</span><span style="font-weight:bold;">: aborting due to previous error</span>
 
 <span style="font-weight:bold;">For more information about this error, try `rustc --explain E0597`.</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;color:red;">error</span><span style="font-weight:bold;">:</span> could not compile `rust_nuggets_errors`.
+
+To learn more, run the command again with --verbose.
+
+
+
+
+$ cargo check --example recursive_struct
+
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">error[E0072]</span><span style="font-weight:bold;">: recursive type `Node` has infinite size</span>
+ <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">--&gt; </span>errors/examples/recursive_struct.rs:7:1
+  <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">|</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">7</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>struct Node {
+  <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span><span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">^^^^^^^^^^^</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">recursive type has infinite size</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">8</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>    child: Node,
+  <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>           <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">----</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">recursive without indirection</span>
+  <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">|</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:aqua;">help</span>: insert some indirection (e.g., a `Box`, `Rc`, or `&amp;`) to make `Node` representable
+  <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">|</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">8</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>    child: Box&lt;Node&gt;,
+  <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>           <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:aqua;">^^^^</span>    <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:aqua;">^</span>
+
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:red;">error</span><span style="font-weight:bold;">: aborting due to previous error</span>
+
+<span style="font-weight:bold;">For more information about this error, try `rustc --explain E0072`.</span>
 <span style="font-weight:bold;"></span><span style="font-weight:bold;color:red;">error</span><span style="font-weight:bold;">:</span> could not compile `rust_nuggets_errors`.
 
 To learn more, run the command again with --verbose.
