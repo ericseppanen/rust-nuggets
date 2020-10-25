@@ -1,14 +1,20 @@
 # Rust Nuggets
 
-This is a collection of small bits of Rust code.  Each file demonstrates one concept as clearly as possible.
+This is a collection of small bits of Rust code.  Each example demonstrates one concept as clearly as possible.
 
 In the `errors/examples` directory, you will find Rust examples that won't compile, and produce clean error messages to demonstrate a particular concept: mutability, lifetimes, etc. To see one example by itself, run e.g. `cargo check --example immutable_ref`
 
-You can see an HTML version of the error examples [here](https://raw.githack.com/ericseppanen/rust-nuggets/master/html/output.html).
+In the `warnings/examples` directory, you will find similar examples that produce compiler warnings.
+
+The `basics/examples` directory contains examples of "good code" that compiles cleanly.
+
+You can see an HTML version of the error and warning examples [here](https://raw.githack.com/ericseppanen/rust-nuggets/master/html/output.html).
 
 ### What's this for?
 
 These examples are meant to be used to teach people about Rust.  Specifically, if you need a quick presentation slide demonstrating one concept, but don't want to get tripped up by including other things (e.g. generic values, ? operator, traits) that you haven't introduced yet.
+
+![sample slide image](https://raw.githubusercontent.com/ericseppanen/rust-nuggets/master/sample_slide.png)
 
 In the case of the compiler errors, they're meant to emit error messages that can easily be pasted into a slide, and make sense even if you don't show the source code.
 
