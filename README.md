@@ -4,7 +4,7 @@ This is a collection of small bits of Rust code.  Each file demonstrates one con
 
 In the `errors/examples` directory, you will find Rust examples that won't compile, and produce clean error messages to demonstrate a particular concept: mutability, lifetimes, etc. To see one example by itself, run e.g. `cargo check --example immutable_ref`
 
-You can see an HTML version of the error examples [here](https://raw.githack.com/ericseppanen/rust-nuggets/master/html/errors.html).
+You can see an HTML version of the error examples [here](https://raw.githack.com/ericseppanen/rust-nuggets/master/html/output.html).
 
 ### What's this for?
 

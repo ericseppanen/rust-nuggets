@@ -6,5 +6,5 @@ which aha >/dev/null || {
   exit 1
 }
 
-export TITLE="Rust Nuggets: error examples"
-./run_cargo_check 2>&1 | aha --black --title "$TITLE" >errors.html
+export TITLE="Rust Nuggets: error and warning examples"
+./run_cargo_check 2>&1 | aha --black --title "$TITLE" >output.html

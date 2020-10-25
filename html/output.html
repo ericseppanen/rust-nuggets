@@ -4,11 +4,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="application/xml+xhtml; charset=UTF-8" />
-<title>Rust Nuggets: error examples</title>
+<title>Rust Nuggets: error and warning examples</title>
 </head>
 <body style="color:white; background-color:black">
 <pre>
-######## Rust Nuggets: error examples ########
+######## Rust Nuggets: error and warning examples ########
+
+
+
+
+$ cargo check --example must_use_result
+
+<span style="font-weight:bold;"></span><span style="font-weight:bold;color:yellow;">warning</span><span style="font-weight:bold;">: unused `std::result::Result` that must be used</span>
+ <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">--&gt; </span>warnings/examples/must_use_result.rs:9:5
+  <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">|</span>
+<span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">9</span> <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>    fs::rename(&quot;old_file&quot;, &quot;new_file&quot;);
+  <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">| </span>    <span style="font-weight:bold;"></span><span style="font-weight:bold;color:yellow;">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+  <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">|</span>
+  <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">= </span><span style="font-weight:bold;">note</span>: `#[warn(unused_must_use)]` on by default
+  <span style="font-weight:bold;"></span><span style="font-weight:bold;filter: contrast(70%) brightness(190%);color:#3333FF;">= </span><span style="font-weight:bold;">note</span>: this `Result` may be an `Err` variant, which should be handled
+
+<span style="font-weight:bold;"></span><span style="font-weight:bold;color:yellow;">warning</span><span style="font-weight:bold;">: 1 warning emitted</span>
+
 
 
 
