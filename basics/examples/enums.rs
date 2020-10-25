@@ -2,6 +2,8 @@
 //
 // This file contains useful examples of enums.
 //
+// See standard.rs for some more examples from the Rust standard library.
+//
 
 // An example of an enum used without associated data.
 
