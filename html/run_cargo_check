@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo -e "######## $TITLE ########"
+echo "######## $TITLE ########"
+echo "https://github.com/ericseppanen/rust-nuggets"
 for FILE in ../warnings/examples/*.rs ../errors/examples/*.rs; do
   FILE1=${FILE%.rs}  # strip extension
   FILE2=${FILE1##*/} # strip path
