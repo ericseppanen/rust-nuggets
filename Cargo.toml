@@ -1,5 +1,5 @@
 [workspace]
 
 members = [
-    "basics", "errors",
+    "basics", "errors", "warnings"
 ]

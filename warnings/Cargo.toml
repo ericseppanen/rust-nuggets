@@ -1,0 +1,11 @@
+[package]
+name = "rust_nuggets_warnings"
+version = "0.1.0"
+authors = ["Eric Seppanen <eds@reric.net>"]
+edition = "2018"
+
+[[example]]
+name = "must_use_result"
+crate-type = ["lib"]
+
+[dependencies]
