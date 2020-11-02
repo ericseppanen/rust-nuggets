@@ -13,6 +13,10 @@ name = "mutex_guard_lifetime"
 crate-type = ["lib"]
 
 [[example]]
+name = "nonexhaustive_patterns"
+crate-type = ["lib"]
+
+[[example]]
 name = "vec_ref_push"
 crate-type = ["lib"]
 
