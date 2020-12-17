@@ -28,4 +28,8 @@ crate-type = ["lib"]
 name = "recursive_struct"
 crate-type = ["lib"]
 
+[[example]]
+name = "static_trait_bound"
+crate-type = ["lib"]
+
 [dependencies]
